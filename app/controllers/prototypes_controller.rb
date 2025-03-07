@@ -37,6 +37,17 @@ class PrototypesController < ApplicationController
       end
   end
 
+  def destroy
+    @prototype = Prototype.find(params[:id])
+    if @prototype.destroy
+      # flash[:success] = 'Prototype was successfully deleted.'
+      redirect_to root_path
+    else
+      # flash[:error] = 'Something went wrong'
+      render "show"
+    end
+  end
+
   private
   def prototype_params
     params.require(:prototype).permit(:title, :catch_copy, :concept, :image).merge(user_id: current_user.id)
