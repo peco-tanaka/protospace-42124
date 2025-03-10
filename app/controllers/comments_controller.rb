@@ -6,7 +6,9 @@ class CommentsController < ApplicationController
       redirect_to prototype_path(@comment.prototype)
     else
       # flash[:error] = "Something went wrong"
-      render prototype_path(@comment.prototype), status: :unprocessable_entity
+      @prototype = Prototype.find[:prototype_id]
+      @comments = @prototype.comments.includes(:user)
+      render "prototypes/show", status: :unprocessable_entity
     end
   end
 

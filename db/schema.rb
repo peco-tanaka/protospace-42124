@@ -49,6 +49,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_07_044842) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "prototypes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", null: false
     t.text "catch_copy", null: false
